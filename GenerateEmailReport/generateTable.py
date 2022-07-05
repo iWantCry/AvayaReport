@@ -10,7 +10,7 @@ def generateTable(path, day, monthNameAbbr):
         wb = load_workbook(path)
         ws = wb.active
 
-        ws["A1"] = f"Avaya Call Volume {day} {monthNameAbbr}"
+        ws["A1"] = f"Avaya Call Volume {day-1} {monthNameAbbr}"
 
         # Remove unwanted columns
         ws.delete_cols(13,2)
