@@ -8,7 +8,7 @@ def askDir():
     # Hide main window
     root.withdraw()
 
-    path = filedialog.askdirectory(initialdir="/", title="Select file for Avaya Report Generation")
+    path = filedialog.askdirectory(initialdir="/", title="Select folder for Avaya Report Generation")
 
     # Destroy main window
     root.destroy()

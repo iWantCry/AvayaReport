@@ -1,14 +1,17 @@
 from openpyxl import *
 from openpyxl import load_workbook
 import tkinter as tk
+import warnings
+import os
 
 def editMacroFile(path, entries):
-    try:
+    #try:
         # TESTING
         # path = f'C:/Users/Reagan Toh/Documents/AvayaReportTesting/Avaya_Report latest.xlsm'
 
         # Directory for macro file
         filename = f"{path}/Avaya_Report latest.xlsm"
+        warnings.simplefilter(action='ignore', category=UserWarning)
         wb = load_workbook(filename=filename, read_only=False, keep_vba=True)
 
         # Open workbook
@@ -51,16 +54,16 @@ def editMacroFile(path, entries):
         ws["B7"] = avayaReport
 
         # Save workbook
-        wb.save(filename=path)
+        wb.save(filename=filename)
         wb.close()
 
-        return path
+        return filename
 
     # In the event that the user tries to run the program while trying to work inside the oneDrive directory,
     # Tkinter GUI will inform the user that the program has no permission to edit oneDrive files and will be asked
     # to work inside local drive instead.
 
-    except PermissionError:
+    #except PermissionError:
         # Tkinter GUI for invalid directory / no permission
         ws = tk.Tk()
         ws.geometry("300x200")

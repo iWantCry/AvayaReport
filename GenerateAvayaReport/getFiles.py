@@ -2,7 +2,8 @@ import os
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
-import datetime      
+import datetime
+from xmlrpc.client import _datetime_type      
 
 from askDir import askDir
 
@@ -19,7 +20,7 @@ def getFiles(year, month, day):
         if entry.startswith(f"Agent All_{year}-{month}-{day}"):
             check.append("True1")
 
-        elif entry.startswith(f"Avaya Reports - {year}-{month}-{day-1}"):
+        elif entry.startswith(f"Avaya Reports -"):
             check.append("True2")
 
         elif entry.startswith("avaya"):
@@ -28,7 +29,7 @@ def getFiles(year, month, day):
         elif entry.startswith("Avaya_Report latest"):
             check.append("True4")
 
-        elif entry.startswith(f"Contact_Details_{datetime.datetime.today().month}-{day-1}-{year}_{datetime.datetime.today().month}-{day-1}-{year}"):
+        elif entry.startswith(f"Contact_Details_"):
             check.append("True5")
 
         elif entry.startswith("CRVReport"):
@@ -40,10 +41,11 @@ def getFiles(year, month, day):
         elif entry.startswith(f"Topics by Days_{year}-{month}-{day}"):
             check.append("True8")
 
+
     # Check = True (All files present)
     if len(check) == 8:
         print("Files ready for macro")
-        return entries
+        return entries, path
 
     # Check = False (Some files are not present/invalid)
     else:
