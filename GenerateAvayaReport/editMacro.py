@@ -5,7 +5,7 @@ import warnings
 import os
 
 def editMacroFile(path, entries):
-    #try:
+    try:
         # TESTING
         # path = f'C:/Users/Reagan Toh/Documents/AvayaReportTesting/Avaya_Report latest.xlsm'
 
@@ -20,9 +20,9 @@ def editMacroFile(path, entries):
 
         # TESTING
         # ws["B1"] = f"C:/Users/{user}/Documents/AvayaReportTesting/"
-
+        print(path)
         # Directory for report
-        ws["B1"] = path
+        ws["B1"] = path + "/"
 
         # Assigning variables to each file needed for macro
         
@@ -63,7 +63,7 @@ def editMacroFile(path, entries):
     # Tkinter GUI will inform the user that the program has no permission to edit oneDrive files and will be asked
     # to work inside local drive instead.
 
-    #except PermissionError:
+    except PermissionError:
         # Tkinter GUI for invalid directory / no permission
         ws = tk.Tk()
         ws.geometry("300x200")
